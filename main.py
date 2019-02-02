@@ -6,6 +6,7 @@ import pygame
 #Khai bao abstract class
 from setting import Settings
 from ship import Ship
+
 import game_func as gf 
 
 def run_game():
