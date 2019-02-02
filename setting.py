@@ -1,21 +1,18 @@
 #Abstract class
 class Settings():
-    """ store all settings for game
-
-    #Attrib
+    """ 
     scr_width = 1200
     scr_hight = 800
     bg_color = (0, 191, 255)
 
-    # Method/ Func
     """
     def __init__(self): 
-        # Settings for screen
+        # Sceen settings
         self.scr_width = 1200   
         self.scr_hight = 800
         self.bg_color = (0, 191, 255)
 
-        #Ship settings 
+        # Ship settings 
         self.ship_speed_factor = 1.5
 
         # Bullet settings
@@ -23,4 +20,5 @@ class Settings():
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (255, 0, 0)
+        self.bullets_allowed = 3
 

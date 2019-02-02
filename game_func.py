@@ -10,9 +10,23 @@ def check_keydown_events(event, g_set, screen, ship, bullets): #when the key is 
         ship.moving_right = True
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
+    
     elif event.key == pygame.K_SPACE:
-        # Create a new bullet and add it to the bullets group
+        fire_bullet(g_set, screen, ship, bullets)
+
+        """
+        # Create a new bullet 
+        if len(bullets) < g_set.bullets_allowed: # limmit number of bullets 
+            new_bullet = Bullet(g_set, screen, ship)
+            # Add it to the bullets group
+            bullets.add(new_bullet)
+        """
+def fire_bullet(g_set, screen, ship, bullets):
+    """ Fire a bullet if limit not reached yet"""
+    # Create a new bullet 
+    if len(bullets) < g_set.bullets_allowed: # limmit number of bullets 
         new_bullet = Bullet(g_set, screen, ship)
+            # Add it to the bullets group
         bullets.add(new_bullet)
 
 def check_keyup_events(event, ship): # when the key is released
@@ -61,3 +75,13 @@ def update_screen(g_set, screen, ship, bullets):
 
     #Make the most recently draw screen visible
     pygame.display.flip()
+
+def update_bullets(bullets):
+    """ Update position of bullets and get rid of old bullets"""
+    # Update bullet position
+    bullets.update()
+
+    # Get rid of bullets that have disappeared
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)

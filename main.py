@@ -1,7 +1,7 @@
 # Alien-Invasion game
 
 import pygame
-from pygame.sprite import Group # Import Group from pygame.sprite
+from pygame.sprite import Group 
 
 from setting import Settings
 from ship import Ship
@@ -30,10 +30,19 @@ def run_game():
 
     # Main loop for game
     while True:
-        gf.check_events(g_set, screen, ship, bullets) # we need to work with bullets in check_events() when the spacebar is pressed
-        ship.update()
-        bullets.update() 
-        gf.update_screen(g_set, screen, ship, bullets) # 
+        gf.check_events(g_set, screen, ship, bullets) # check for the main input
+        ship.update() # update ship's position
+        #bullets.update() 
+        gf.update_bullets(bullets) # any bullets hahve been fired
+        
+        """# Get rid of bullets that have disappeared
+        for bullet in bullets.copy(): # copy() method to set up for loop
+                if bullet.rect.bottom <= 0: # check whether bullets disappeared off the top of scr
+                        bullets.remove(bullet)
+        #print(len(bullets))
+        """
+
+        gf.update_screen(g_set, screen, ship, bullets) # draw new screen
 
         """Refactoring
         # watch for keyboard and mouse event
