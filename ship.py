@@ -1,13 +1,15 @@
 # Ship class
 
 import pygame
+from pygame.sprite import Sprite 
 
-class Ship():
+class Ship(Sprite):
 
     def __init__(self, settings, screen):
         """
         Initialize ship and locate its starting position
         """
+        super(Ship, self).__init__()
         self.screen = screen
         self.settings = settings 
         self.image = pygame.image.load('images/ship.bmp')
